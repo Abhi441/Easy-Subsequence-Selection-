@@ -1,0 +1,44 @@
+# Easy-Subsequence-Selection-
+easy level
+//Easy Subsequence Selection 
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+/* Name of the class has to be "Main" only if the class is public. */
+class Main
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc = new Scanner(System.in);
+		int t ,n ,j;
+		t = Integer.parseInt(sc.nextLine());
+		for(j=0; j<t ;j++)
+		{
+		n = Integer.parseInt(sc.nextLine());
+		    String s = sc.nextLine();
+		    HashMap<Character,Integer> hm = new HashMap<>();
+		    int i=0, min_dist =Integer.MAX_VALUE,dist=0;
+		    while(i<s.length())
+		    {
+		        if(!hm.containsKey(s.charAt(i)))
+		        {
+		            hm.put(s.charAt(i),i);
+		           
+		        }
+		        else{
+		            dist = i - hm.get(s.charAt(i));
+		            //System.out.println(dist);
+		            min_dist = Math.min(dist ,min_dist);
+		                hm.put(s.charAt(i),i);
+		        }
+		        i++;
+		    }
+		    
+		    if(min_dist!=Integer.MAX_VALUE)
+		    System.out.println(n-min_dist);
+		    else
+		    System.out.println(0);
+		}
+	}
